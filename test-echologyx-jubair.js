@@ -72,7 +72,7 @@ style.innerHTML = `
 .single__category__container{
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 }
 .single__category__header{
 	display: flex;
@@ -92,29 +92,89 @@ style.innerHTML = `
 }
 .single__category__product{
 	display: flex;
+	background-color: #F5F5F5;
+	width: 100%;
+	margin-bottom: 30px;
+	cursor: pointer;
+}
+.product__image{
+	position: relative;
+	width: 395px;
+}
+.main__image{
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+.sub__image{
+	position: absolute;
+	bottom: 20px;
+	left: 26px;
 }
 
-// @media only screen and (max-width: 380px) {
-//     .categories__card__wrapper {
-//         display: grid;
-//         grid-auto-columns: repeat(1, 1fr);
-//     }
-//     .single_category{
-//     	width: 100%;
-//     }
-// }
+.single__product__info{
+	padding: 20px 30px;
+}
+.single__product__info h2{
+	font-size: 28px;
+	font-weight: 600;
+	margin: 0;
+}
 
-// @media only screen and (max-width: 780px) {
-//     .categories__container {
-//         flex-wrap: wrap;
-//         align-items: center;
-//         row-gap: 30px;
-//         padding: 0 0;
-//     }
-//     #categories__title {
-//         padding-left: 0;
-//     }
-// }
+.product__subTitle{
+	margin-top: 10px;
+	margin-bottom: 25px;
+	font-size: 20px;
+	font-weight: 300;
+}
+.list__container__title{
+	margin-bottom: 10px;
+		font-size: 16px;
+}
+.list__container{
+	/*display: flex;*/
+	/*flex-direction: column;*/
+	/*row-gap: 5px;*/
+}
+.list__container li{
+	font-size: 16px;
+}
+
+.cta__btn{
+	color: white;
+	height: 38px;
+	border: none;
+	border-radius: 8px;
+	background-color: #43ACC6;
+	margin-top:25px ;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+@media only screen and (max-width: 380px) {
+    .categories__card__wrapper {
+        display: grid;
+        grid-auto-columns: repeat(1, 1fr);
+    }
+    .single_category{
+    	width: 100%;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .categories__container {
+        flex-wrap: wrap;
+        align-items: center;
+        row-gap: 30px;
+        padding: 0 0;
+    }
+    #categories__title {
+        padding-left: 0;
+    }
+}
 `
 document.head.appendChild(style);
 
@@ -167,7 +227,7 @@ const categoriesData = [
                 productSubTitle: 'Kleine Sparrate, große Träume',
                 productInfoListHeading: 'Ihre Vorteile bei der Consorsbank',
                 productInfoList: [
-                    'kostenloses Girokonto bei monatlichem Geldeingang ab 700 Eur Kostenlose Visa Card inklusiv', 'oder für alle unter 28 Jahren*'
+                    'kostenloses Girokonto bei monatlichem', 'oder für alle unter 28 Jahren*'
                 ],
                 productCtA: 'Zum Sparplam',
                 productLink: ''
@@ -188,7 +248,7 @@ const categoriesData = [
                 productSubTitle: 'Kleine Sparrate, große Träume',
                 productInfoListHeading: 'Ihre Vorteile bei der Consorsbank:',
                 productInfoList: [
-                    'kostenloses Girokonto bei monatlichem Geldeingang ab 700 Eur Kostenlose Visa Card inklusiv', 'oder für alle unter 28 Jahren*'
+                    'kostenloses Girokonto bei monatlichem', 'oder für alle unter 28 Jahren*'
                 ],
                 productCtA: 'Zum Sparplam',
                 productLink: ''
@@ -200,7 +260,7 @@ const categoriesData = [
                 productSubTitle: 'Kleine Sparrate, große Träume',
                 productInfoListHeading: 'Ihre Vorteile bei der Consorsbank:',
                 productInfoList: [
-                    'kostenloses Girokonto bei monatlichem Geldeingang ab 700 Eur Kostenlose Visa Card inklusiv', 'oder für alle unter 28 Jahren*'
+                    'kostenloses Girokonto bei monatlichem', 'oder für alle unter 28 Jahren*'
                 ],
                 productCtA: 'Zum Sparplam',
                 productLink: ''
@@ -212,7 +272,7 @@ const categoriesData = [
                 productSubTitle: 'Kleine Sparrate, große Träume',
                 productInfoListHeading: 'Ihre Vorteile bei der Consorsbank:',
                 productInfoList: [
-                    'kostenloses Girokonto bei monatlichem Geldeingang ab 700 Eur Kostenlose Visa Card inklusiv', 'oder für alle unter 28 Jahren*'
+                    'kostenloses Girokonto bei monatlichem kostenloses Girokonto bei', 'oder für alle unter 28 Jahren*'
                 ],
                 productCtA: 'Zum Sparplam',
                 productLink: ''
@@ -234,7 +294,7 @@ const categoriesData = [
                 productSubTitle: 'Kleine Sparrate, große Träume',
                 productInfoListHeading: 'Ihre Vorteile bei der Consorsbank:',
                 productInfoList: [
-                    'kostenloses Girokonto bei monatlichem Geldeingang ab 700 Eur Kostenlose Visa Card inklusiv', 'oder für alle unter 28 Jahren*'
+                    'kostenloses Girokonto bei monatlichem', 'oder für alle unter 28 Jahren*'
                 ],
                 productCtA: 'Zum Sparplam',
                 productLink: ''
@@ -246,7 +306,7 @@ const categoriesData = [
                 productSubTitle: 'Kleine Sparrate, große Träume',
                 productInfoListHeading: 'Ihre Vorteile bei der Consorsbank:',
                 productInfoList: [
-                    'kostenloses Girokonto bei monatlichem Geldeingang ab 700 Eur Kostenlose Visa Card inklusiv', 'oder für alle unter 28 Jahren*'
+                    'kostenloses Girokonto bei monatlichemv kostenloses', 'oder für alle unter 28 Jahren*'
                 ],
                 productCtA: 'Zum Sparplam',
                 productLink: ''
@@ -257,7 +317,7 @@ const categoriesData = [
 ];
 
 
-let categoriesContainer = `<div class='categories__container'></div>`
+let categoriesContainer = `<div class='categories__container'></div>`;
 let header = document.querySelector('header');
 header.insertAdjacentHTML('afterend', categoriesContainer);
 
@@ -297,8 +357,8 @@ function countTotalProduct(data) {
     data.forEach(category => {
         if (category.active) {
             total += category.products?.length;
-        }
-    })
+        };
+    });
     return total;
 };
 
@@ -328,33 +388,53 @@ const categoriesProductsContainer = document.querySelector('.categories__product
 
 // const categoriesProductContainer = document.querySelector('.categories__product__container');
 
-
+const listTikMark = '';
 categoriesData.forEach((category, index) => {
-    let categoryProductsContainerHTML = `<div class='single__category__container'></div>`;
-    categoriesProductsContainer.insertAdjacentHTML('beforeend', categoryProductsContainerHTML)
-    let categoryProductsContainer = document.querySelector('.single__category__container');
 
     if (category.active) {
+        let categoryProductsContainerHTML = `<div class='single__category__container'></div>`;
+        categoriesProductsContainer.insertAdjacentHTML('beforeend', categoryProductsContainerHTML);
+        let categoryProductsContainer = categoriesProductsContainer.lastChild
+
         categoryProductsContainer.insertAdjacentHTML('beforeend', `
-		<div class='single__category__header'>
-			<div class='category__icon'>${demoBlackIcon}</div>
-			<div>
-				<h2>${category.categoryTitle}</h2>
-				<p>${category.products.length} ${category.products.length > 1 ? 'Produkte' : 'Produkt'}</p>
+			<div class='single__category__header'>
+				<div class='category__icon'>${demoBlackIcon}</div>
+				<div>
+					<h2>${category.categoryTitle}</h2>
+					<p>${category.products.length} ${category.products.length > 1 ? 'Produkte' : 'Produkt'}</p>
+				</div>
 			</div>
-		</div>`);
+		`);
+
         category.products.forEach(product => {
             categoryProductsContainer.insertAdjacentHTML('beforeend', `
-			<div class='single__category__product>
-				<div class=''>
-					<img src=${product.productImage} />
+			<div class='single__category__product'>
+				<div class='product__image'>
+					<img class='main__image' src=${product.productImage} />
+					<img class='sub__image' src=${product.subImage} />
 				</div>
-				<h2 class=''>${product.productTitle}</h2>
+				<div class='single__product__info'>
+					<h2>${product.productTitle}</h2>
+					<p class='product__subTitle'>${product.productSubTitle}</p>
+					<p class='list__container__title'>${product.productInfoListHeading}</p>
+					<div class='list__container'>
+						<li>${product.productInfoList[0]}</li>
+						<li>${product.productInfoList[1]}</li>
+					</div>
+					<button class='cta__btn'>${product.productCtA} ></button>
+				</div>
 			</div>`);
-        })
-    }
-})
+            // const listContainer = document.querySelector('.list__container');
 
+            // product.productInfoList.forEach(list =>{
+            // 	listContainer.insertAdjacentHTML('beforeend', `
+            // 	<li></li>
+            // 	`)
+            // 	listContainer.lastChild.textContent = {list}
+            // })
+        });
+    };
+});
 
 
 
