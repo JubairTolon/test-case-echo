@@ -372,8 +372,10 @@ categoriesData.forEach(category => {
             if (data.id === foundId) {
                 if (data.active) {
                     data.active = false;
+                    getAllProduct(categoriesData);
                 } else {
                     data.active = true;
+                    getAllProduct(categoriesData);
                 }
             };
         });
@@ -412,14 +414,23 @@ const demoBlackIcon = `<svg width="52" height="40" viewBox="0 0 52 40" fill="non
 const categoriesProductsContainer = document.querySelector('.categories__products__container');
 
 const listTikMark = '';
-categoriesData.forEach((category, index) => {
 
-    if (category.active) {
-        let categoryProductsContainerHTML = `<div class='single__category__container'></div>`;
-        categoriesProductsContainer.insertAdjacentHTML('beforeend', categoryProductsContainerHTML);
-        let categoryProductsContainer = categoriesProductsContainer.lastChild
 
-        categoryProductsContainer.insertAdjacentHTML('beforeend', `
+
+
+
+
+getAllProduct(categoriesData);
+
+function getAllProduct(categoriesData) {
+    categoriesData.forEach((category, index) => {
+
+        if (category.active) {
+            let categoryProductsContainerHTML = `<div class='single__category__container'></div>`;
+            categoriesProductsContainer.insertAdjacentHTML('beforeend', categoryProductsContainerHTML);
+            let categoryProductsContainer = categoriesProductsContainer.lastChild
+
+            categoryProductsContainer.insertAdjacentHTML('beforeend', `
 			<div class='single__category__header'>
 				<div class='category__icon'>${demoBlackIcon}</div>
 				<div>
@@ -429,8 +440,8 @@ categoriesData.forEach((category, index) => {
 			</div>
 		`);
 
-        category.products.forEach(product => {
-            categoryProductsContainer.insertAdjacentHTML('beforeend', `
+            category.products.forEach(product => {
+                categoryProductsContainer.insertAdjacentHTML('beforeend', `
 			<div class='single__category__product'>
 				<div class='product__image'>
 					<img class='main__image' src=${product.productImage} />
@@ -447,9 +458,10 @@ categoriesData.forEach((category, index) => {
 					<button class='cta__btn'>${product.productCtA} ></button>
 				</div>
 			</div>`);
-        });
-    };
-});
+            });
+        };
+    });
+}
 
 
 
