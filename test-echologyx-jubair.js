@@ -167,7 +167,7 @@ style.innerHTML = `
 //     	margin:  0 auto;
 //     	width: 100%;
 //     }
-// }
+// }g
 
 // @media only screen and (max-width: 780px) {
 //     .categories__container {
