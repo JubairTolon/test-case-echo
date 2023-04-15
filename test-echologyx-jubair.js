@@ -51,6 +51,9 @@ style.innerHTML = `
     align-items: center;
     justify-content: center;
 }
+.tikMark__none{
+	display: none;
+}
 .block_benefits {
 	display: none;
 }
@@ -154,28 +157,29 @@ style.innerHTML = `
 }
 
 
-@media only screen and (max-width: 380px) {
-    .categories__card__wrapper {
-        display: grid;
-        grid-auto-columns: repeat(1, 1fr);
-    }
-    .single_category{
-    	width: 100%;
-    }
-}
+// @media only screen and (max-width: 380px) {
+//     .categories__card__wrapper {
+//         grid-auto-columns: repeat(1, 1fr);
+//         gap: 10px;
+//         width: 100%;
+//     }
+//     .single_category{
+//     	margin:  0 auto;
+//     	width: 100%;
+//     }
+// }
 
-@media only screen and (max-width: 780px) {
-    .categories__container {
-        flex-wrap: wrap;
-        align-items: center;
-        row-gap: 30px;
-        padding: 0 0;
-    }
-    #categories__title {
-        padding-left: 0;
-    }
-}
-`
+// @media only screen and (max-width: 780px) {
+//     .categories__container {
+//         flex-wrap: wrap;
+//         align-items: center;
+//         row-gap: 30px;
+//         padding: 0 0;
+//     }
+//     #categories__title {
+//       padding-left: 0;
+//     }
+// }`
 document.head.appendChild(style);
 
 
@@ -214,7 +218,7 @@ const categoryIcon3 = `<svg width="67" height="50" viewBox="0 0 67 50" fill="non
 
 const categoriesData = [
     {
-        id: 'Tagesgeldkonto',
+        id: 'tagesgeldkonto',
         categoryIcon: categoryIcon1,
         categoryTitle: 'Tagesgeldkonto',
         categorySubTitle: 'Geld parken und 0,6 % Zinsen p. a. sichern',
@@ -235,7 +239,7 @@ const categoriesData = [
         ]
     },
     {
-        id: 'Wertpapiere',
+        id: 'wertpapiere',
         categoryIcon: categoryIcon2,
         categoryTitle: 'Wertpapiere',
         categorySubTitle: 'Vermögensaufbau und Sparen',
@@ -281,7 +285,7 @@ const categoriesData = [
         ]
     },
     {
-        id: 'Girokonto',
+        id: 'girokonto',
         categoryIcon: categoryIcon3,
         categoryTitle: 'Girokonto',
         categorySubTitle: 'Unsere Klassiker mit Top-Konditionen',
@@ -331,13 +335,18 @@ categoriesContainerWrapper.insertAdjacentHTML('beforeend', categoriesCardWrapper
 let categoriesCardWrapper = document.querySelector('.categories__card__wrapper');
 let tikMarkIcon = ``;
 
+
+function getId(category) {
+    console.log(category);
+};
+
 categoriesData.forEach(category => {
     categoriesCardWrapper.insertAdjacentHTML('beforeend', `
-	<div class='single_category'>
+	<div id='${category.id}' class='single_category'>
 		${category.categoryIcon}
 		<h2>${category.categoryTitle}</h2>
 		<p>${category.categorySubTitle}</p>
-		<div class="tikMark__container">
+		<div id="tik" class="tikMark__container">
 		    <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 		        <path d="M7.60829 19L0 11.7309L1.99623 10.283L7.23164 15.2768L17.7778 0L20 1.06376L7.60829 19Z"
 		        fill="white" />
@@ -345,12 +354,33 @@ categoriesData.forEach(category => {
 		</div>
 	</div>
 	` )
-})
 
-const addEventToSingleCategory = document.querySelector('.single_category');
-addEventToSingleCategory.addEventListener('click', function (e) {
-    console.log(e);
-})
+    let element = document.getElementById(category.id);
+
+    element.addEventListener("click", function () {
+        let foundId = this.id;
+        const parent = document.querySelector(`#${foundId}`);
+        const tikBox = parent.querySelector('#tik');
+
+        const getTikBoxClass = tikBox.getAttribute('class');
+        if (getTikBoxClass === 'tikMark__container') {
+            tikBox.setAttribute('class', 'tikMark__none')
+        } else {
+            tikBox.setAttribute('class', 'tikMark__container')
+        }
+        console.log(tikBox.getAttribute('class'));
+
+        categoriesData.forEach(data => {
+            if (data.id === foundId) {
+                if (data.active) {
+                    data.active = false;
+                } else {
+                    data.active = true;
+                }
+            };
+        });
+    });
+});
 
 function countTotalProduct(data) {
     let total = 0;
@@ -382,11 +412,6 @@ const demoBlackIcon = `<svg width="52" height="40" viewBox="0 0 52 40" fill="non
 </svg>
 `
 const categoriesProductsContainer = document.querySelector('.categories__products__container');
-
-// const categoriesProductContainerHTML = `<div class='categories__product__container'></div>`;
-// categoriesProductsContainer.insertAdjacentHTML('afterbegin', categoriesProductContainerHTML);
-
-// const categoriesProductContainer = document.querySelector('.categories__product__container');
 
 const listTikMark = '';
 categoriesData.forEach((category, index) => {
@@ -424,18 +449,9 @@ categoriesData.forEach((category, index) => {
 					<button class='cta__btn'>${product.productCtA} ></button>
 				</div>
 			</div>`);
-            // const listContainer = document.querySelector('.list__container');
-
-            // product.productInfoList.forEach(list =>{
-            // 	listContainer.insertAdjacentHTML('beforeend', `
-            // 	<li></li>
-            // 	`)
-            // 	listContainer.lastChild.textContent = {list}
-            // })
         });
     };
 });
-
 
 
 
