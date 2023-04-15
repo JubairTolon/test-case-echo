@@ -167,7 +167,7 @@ style.innerHTML = `
 //     	margin:  0 auto;
 //     	width: 100%;
 //     }
-// }g
+// }
 
 // @media only screen and (max-width: 780px) {
 //     .categories__container {
@@ -177,9 +177,11 @@ style.innerHTML = `
 //         padding: 0 0;
 //     }
 //     #categories__title {
-//       padding-left: 0;
+//         padding-left: 0;
 //     }
-// }`
+// }
+
+`
 document.head.appendChild(style);
 
 
@@ -335,10 +337,6 @@ categoriesContainerWrapper.insertAdjacentHTML('beforeend', categoriesCardWrapper
 let categoriesCardWrapper = document.querySelector('.categories__card__wrapper');
 let tikMarkIcon = ``;
 
-
-function getId(category) {
-    console.log(category);
-};
 
 categoriesData.forEach(category => {
     categoriesCardWrapper.insertAdjacentHTML('beforeend', `
