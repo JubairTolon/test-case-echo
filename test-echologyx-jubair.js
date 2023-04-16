@@ -155,7 +155,21 @@ style.innerHTML = `
 	align-items: center;
 	justify-content: center;
 }
-
+.divider{
+	width: 994px;
+	margin: 0 auto;
+	border-bottom: 2px solid #D9D9D9 ;
+}
+.info{
+	color: #D9D9D9;
+	font-size: 16px;
+}
+.info__container{
+	width: 994px;
+	margin: 0 auto;
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
 
 // @media only screen and (max-width: 380px) {
 //     .categories__card__wrapper {
@@ -351,7 +365,17 @@ categoriesData.forEach(category => {
 		    </svg>
 		</div>
 	</div>
-	` )
+	` );
+
+
+    function removePreviousChild() {
+        let previousChild = categoriesProductsContainer.querySelectorAll('.single__category__container');
+        let previousChildArray = Array.from(previousChild);
+        previousChildArray.forEach(child => {
+            child.remove();
+        });
+    };
+
 
     let element = document.getElementById(category.id);
 
@@ -366,15 +390,18 @@ categoriesData.forEach(category => {
         } else {
             tikBox.setAttribute('class', 'tikMark__container')
         }
-        console.log(tikBox.getAttribute('class'));
 
         categoriesData.forEach(data => {
             if (data.id === foundId) {
                 if (data.active) {
                     data.active = false;
+                    removePreviousChild();
+                    productsInfoTitleHTML
                     getAllProduct(categoriesData);
                 } else {
                     data.active = true;
+                    removePreviousChild();
+                    productsInfoTitleHTML
                     getAllProduct(categoriesData);
                 }
             };
@@ -415,15 +442,10 @@ const categoriesProductsContainer = document.querySelector('.categories__product
 
 const listTikMark = '';
 
-
-
-
-
-
 getAllProduct(categoriesData);
 
 function getAllProduct(categoriesData) {
-    categoriesData.forEach((category, index) => {
+    categoriesData.forEach((category) => {
 
         if (category.active) {
             let categoryProductsContainerHTML = `<div class='single__category__container'></div>`;
@@ -461,7 +483,20 @@ function getAllProduct(categoriesData) {
             });
         };
     });
-}
+};
+
+const dividerHTML = `<div class="divider"></div>`;
+categoriesProductsContainer.insertAdjacentHTML('afterend', dividerHTML);
+
+const info = `
+<p class="info">* Sollten Sie über 28 Jahre sein und kein monatlicher Geldeingang ab 700 Euro vorhanden sein, fallen Kontoführungsgebühren von 4 Euro pro Monat an.</p>
+<p class="info">** Bei Transaktionen mit der Visa Card im Ausland ist es Fremdbanken/Automatenbetreibern teilweise erlaubt, eigene Gebühren für Bargeldtransaktionen zu erheben. In Wettbüros, Casinobetrieben und privaten Lotteriegesellschaften fallen 2,50 % (mindestens 5 Euro) an.</p>
+`
+const divider = document.querySelector('.divider');
+const infoContainerHTML = `<div class="info__container"></div>`;
+divider.insertAdjacentHTML('afterend', infoContainerHTML);
+const infoContainer = document.querySelector('.info__container');
+infoContainer.insertAdjacentHTML('beforeend', info);
 
 
 
