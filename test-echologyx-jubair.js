@@ -402,13 +402,11 @@ categoriesData.forEach(category => {
                     data.active = false;
                     removePreviousChild();
                     getAllProduct(categoriesData);
-                    countTotalProduct(categoriesData);
                     updateProducts();
                 } else {
                     data.active = true;
                     removePreviousChild();
                     getAllProduct(categoriesData);
-                    countTotalProduct(categoriesData);
                     updateProducts();
                 }
             };
