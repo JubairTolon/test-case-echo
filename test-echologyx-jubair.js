@@ -376,6 +376,11 @@ categoriesData.forEach(category => {
         });
     };
 
+    function updateProducts() {
+        let previousProductAmount = document.querySelector('.product__value');
+        previousProductAmount.firstChild.remove();
+        previousProductAmount.insertAdjacentHTML('afterbegin', `${countTotalProduct(categoriesData)} ${countTotalProduct(categoriesData) > 1 ? 'products' : 'product'}`);
+    };
 
     let element = document.getElementById(category.id);
 
@@ -396,13 +401,15 @@ categoriesData.forEach(category => {
                 if (data.active) {
                     data.active = false;
                     removePreviousChild();
-                    productsInfoTitleHTML
                     getAllProduct(categoriesData);
+                    countTotalProduct(categoriesData);
+                    updateProducts();
                 } else {
                     data.active = true;
                     removePreviousChild();
-                    productsInfoTitleHTML
                     getAllProduct(categoriesData);
+                    countTotalProduct(categoriesData);
+                    updateProducts();
                 }
             };
         });
@@ -419,10 +426,9 @@ function countTotalProduct(data) {
     return total;
 };
 
-
 const productsInfoTitleHTML = `
 <div class='product__info__title'>
-    <p>Wir haben <strong>${countTotalProduct(categoriesData)} ${countTotalProduct(categoriesData) > 1 ? 'products' : 'product'}</strong>, gefunden, die zu Ihren Interessen passen.</p>
+    <p class='product__count__info'>Wir haben <strong class='product__value'>${countTotalProduct(categoriesData)} ${countTotalProduct(categoriesData) > 1 ? 'products' : 'product'}</strong>, gefunden, die zu Ihren Interessen passen.</p>
 </div>`;
 categoriesContainerWrapper.insertAdjacentHTML('afterend', productsInfoTitleHTML);
 
